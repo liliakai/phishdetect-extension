@@ -197,6 +197,18 @@
     },
     "optionsSettings": {
         "message": "Settings",
-        "description": "Heading for the form on the settings page."
+        "description": "Heading for the form section on the settings page."
+    },
+    "optionsBrowserHistory": {
+        "message": "Browser History",
+        "description": "Heading for history scanning section of settings page"
+    },
+    "optionsScanBrowserHistory": {
+        "message": "PhishDetect can scan your full browser history for suspicious URLs.",
+        "description": "Text explaining the browser history scanning feature"
+    },
+    "optionsScanBrowserHistoryButton": {
+        "message": "Scan Browser History",
+        "description": "Button label to scan browser history for phishing indicators"
     }
 }

@@ -72,6 +72,7 @@ function restoreDefaults() {
 document.addEventListener("DOMContentLoaded", loadOptions);
 $("form").submit(saveOptions);
 $("#restoreDefaults").click(restoreDefaults);
+$("#scanHistory").click(checkBrowsingHistory());
 
 $("#report").change(function() {
     if (this.checked) {
