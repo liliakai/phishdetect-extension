@@ -36,11 +36,12 @@ function loadOptions() {
     }
 }
 
-function saveOptions() {
-	var node = $("#server").val().trim();
-	if (node != "") {
-		cfg.setNode(node);
-	}
+function saveOptions(event) {
+    event.preventDefault();
+    var node = $("#server").val().trim();
+    if (node != "") {
+        cfg.setNode(node);
+    }
     var key = $("#key").val().trim();
     if (key != "") {
         cfg.setApiKey(key);
@@ -52,7 +53,13 @@ function saveOptions() {
     cfg.setReport($("#report").is(":checked"));
     cfg.setWebmails($("#webmails").is(":checked"));
 
-    $("#container").html("<div class=\"text-center\"><i class=\"fas fa-check-circle text-5xl text-green\"></i><div class=\"mt-4\">Saved!</div></div>");
+    $("#container").empty().append(
+        $("<div class=\"text-center\">")
+            .append($("<i class=\"fas fa-check-circle text-5xl text-green\">"))
+            .append($("<div class=\"mt-4\">")
+                .text(chrome.i18n.getMessage("optionsSaved"))
+            )
+    );
 }
 
 function restoreDefaults() {

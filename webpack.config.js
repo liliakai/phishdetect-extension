@@ -51,7 +51,6 @@ var options = {
             transform: function (content, path) {
                 // generates the manifest file using the package.json informations
                 return Buffer.from(JSON.stringify({
-                    description: process.env.npm_package_description,
                     version: process.env.npm_package_version,
                     // enable unsafe-eval in development for webpack
                     content_security_policy: (
@@ -62,12 +61,22 @@ var options = {
                 }))
             }
         }]),
-        new CopyWebpackPlugin([{from: 'src/css',to:'css'}]),
-        new CopyWebpackPlugin([{from: 'src/fontawesome',to:'fontawesome'}]),
-        new CopyWebpackPlugin([{from: 'src/icons',to:'icons'}]),
-        new CopyWebpackPlugin([{from: 'src/js',to:'js'}]),
-        new CopyWebpackPlugin([{from: 'src/lib',to:'lib'}]),
-        new CopyWebpackPlugin([{from: 'src/ui',to:'ui'}]),
+        new CopyWebpackPlugin([
+            {from: 'src/css',to:'css'},
+            {from: 'src/icons',to:'icons'},
+            {from: 'src/js',to:'js'},
+            {from: 'src/lib',to:'lib'},
+            {from: 'src/ui',to:'ui'},
+            {from: '_locales/',to:'_locales'},
+            {from: 'node_modules/vex-js/dist/css/vex.css',to:'css'},
+            {from: 'node_modules/vex-js/dist/css/vex-theme-default.css',to:'css'},
+            {from: 'node_modules/tailwindcss/dist/tailwind.min.css',to:'css'},
+            {from: 'node_modules/jquery/dist/jquery.min.js',to:'lib'},
+            {from: 'node_modules/js-sha256/build/sha256.min.js',to:'lib'},
+            {from: 'node_modules/@fortawesome/fontawesome-free/css',to:'fontawesome/css'},
+            {from: 'node_modules/@fortawesome/fontawesome-free/js',to:'fontawesome/js'},
+            {from: 'node_modules/@fortawesome/fontawesome-free/webfonts',to:'fontawesome/webfonts'}
+        ]),
         new WriteFilePlugin()
     ]
 };
